@@ -1,0 +1,167 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #87CEEB, #1E90FF);
+    animation: changeSky 5s infinite;
+}
+
+/* Object Elements */
+
+.plane {
+    position: absolute;
+    top: 50%;
+    right: -100px;
+    animation: flyPlane 10s linear infinite reverse;
+    z-index: 2;
+}
+
+.sun {
+    position: fixed;
+    top: 10%;
+    right: 10%;
+    max-width: 15%;
+    animation: rotateSun 20s linear infinite;
+    z-index: 2;
+}
+
+.moon {
+    position: fixed;
+    top: 10%;
+    right: 10%;
+    max-width: 15%;
+    animation: rotateMoon 20s linear infinite;
+    display: none;
+    z-index: 2;
+}
+
+.cloud {
+    position: absolute;
+}
+
+/* Placement of Clouds */
+
+.cloud-1 { max-width: 30%; top: 30%; left: -50%; animation: moveCloud1 20s linear infinite; }
+.cloud-2 { max-width: 40%; top: 40%; left: -30%; animation: moveCloud2 25s linear infinite; }
+.cloud-3 { max-width: 40%; top: 30%; right: -70%; animation: moveCloud3 18s linear infinite; }
+.cloud-4 { max-width: 100%; top: 40%; right: -40%; animation: moveCloud4 28s linear infinite; }
+.cloud-5 { max-width: 100%; top: 50%; right: -60%; animation: moveCloud5 23s linear infinite; }
+
+.star {
+    position: absolute;
+    animation: scaleStar 5s ease-in-out infinite alternate;
+    display: none;
+    max-width: 5%;
+    height: auto;
+    z-index: -1;
+}
+
+/* Placement of Stars */
+
+.star:nth-child(1) { top: 5%; left: 5%; }
+.star:nth-child(2) { top: 15%; left: 15%; }
+.star:nth-child(3) { top: 25%; left: 35%; }
+.star:nth-child(4) { top: 10%; left: 45%; }
+.star:nth-child(5) { top: 18%; left: 55%; }
+.star:nth-child(6) { top: 10%; left: 70%; }
+.star:nth-child(7) { top: 30%; left: 65%; }
+.star:nth-child(8) { top: 45%; left: 73%; }
+.star:nth-child(9) { top: 40%; left: 85%; }
+.star:nth-child(10) { top: 13%; left: 95%; }
+.star:nth-child(11) { top: 5%; left: 27%; }
+.star:nth-child(12) { top: 35%; left: 95%;}
+.star:nth-child(13) { top: 45%; left: 55%;}
+.star:nth-child(14) { top: 35%; left: 45%;}
+.star:nth-child(15) { top: 30%; left: 22%;}
+.star:nth-child(16) { top: 35%; left: 10%;}
+.star:nth-child(17) { top: 25%; left: 2%;}
+.star:nth-child(18) { top: 45%; left: 30%;}
+
+/* Keyframes for Object Elements */
+
+@keyframes changeSky {
+    0%, 100% { background-color: #87CEEB; }
+    50% { background-color: #000033; }
+}
+
+@keyframes flyPlane {
+    from { right: -1000px; }
+    to { right: 110%; }
+}
+
+@keyframes rotateSun {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes rotateMoon {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes moveCloud1 {
+    from { left: -50%; }
+    to { left: 150%; }
+}
+
+@keyframes moveCloud2 {
+    from { left: -30%; }
+    to { left: 130%; }
+}
+
+@keyframes moveCloud3 {
+    from { right: -70%; }
+    to { right: 130%; }
+}
+
+@keyframes moveCloud4 {
+    from { right: -40%; }
+    to { right: 120%; }
+}
+
+@keyframes moveCloud5 {
+    from { right: -60%; }
+    to { right: 140%; }
+}
+
+@keyframes scaleStar {
+    0%, 100% { transform: scale(0.50); }
+    50% { transform: scale(0.30); }
+}
+
+/* Night Transition */
+
+body.night {
+    background: linear-gradient(to bottom, #000033, #000066);
+}
+
+body.night .plane {
+    animation: flyPlaneNight 10s linear infinite, moveNight 10s infinite;
+    animation: flyPlane 10s linear infinite reverse;
+}
+
+body.night .sun {
+    display: none;
+}
+
+body.night .moon {
+    display: block;
+}
+
+body.night .star {
+    display: block;
+}
+
+/* Keyframes for Object Elements in Night Transition */
+
+@keyframes flyPlaneNight {
+    0%, 100% { left: -200px; }
+    50% { left: calc(100% + 200px); }
+}
+
+@keyframes moveNight {
+    0%, 100% { left: -200px; }
+    50% { left: calc(100% + 200px); }
+}
